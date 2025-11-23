@@ -85,6 +85,33 @@ void peek() {
     return stack[top];
 }
 
+// queues with array
+int queue[100];
+int front = 0; // front of the queue
+int rear = 0; // back of the queue
+
+void enqueue(int value) {
+    if (rear == 99) {
+        return;
+    }
+    queue[rear] = value;
+    rear++;
+}
+
+void dequeue() {
+    if (front == rear) {
+        return;
+    }
+    front++;
+}
+
+void peek() {
+    if (front == rear) {
+        return;
+    }
+    return queue[front];
+}
+
 // random functions
 int factorial(int n) {
     if (n == 0) {
