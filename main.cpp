@@ -45,6 +45,46 @@ void deleteFromBeginning() {
     delete temp;
 }
 
+void reverseLinkedList() {
+    Node* prev = nullptr;
+    Node* current = head;
+    Node* next = nullptr;
+    while (current != nullptr) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    head = prev;
+}
+
+// stacks with array
+int stack[100];
+
+int top = -1; // indicates stack is empty
+
+void push(int value) {
+    if (top == 99) {
+        return;
+    }
+    top++;
+    stack[top] = value;
+}
+
+void pop() {
+    if (top == -1) {
+        return;
+    }
+    top--;
+}
+
+void peek() {
+    if (top == -1) {
+        return;
+    }
+    return stack[top];
+}
+
 // random functions
 int factorial(int n) {
     if (n == 0) {
