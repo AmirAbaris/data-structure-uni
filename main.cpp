@@ -112,6 +112,60 @@ void peek() {
     return queue[front];
 }
 
+// priority queues with array -- its called heap
+
+// binary tree basics
+// is a tree where each node has at most 2 children
+// left child and right child are the only children of a node
+// 10
+// /  \
+// 5    20
+// / \     \
+// 3   7     30
+
+struct TreeNode {
+    int value;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode(int value) {
+        this->value = value;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+// its recursive
+Node* insert(Node* root, int value) {
+    if (root == nullptr) {
+        return new Node(value);
+    }
+
+    if (value < root->value) {
+        root->left = insert(root->left, value);
+    } else {
+        root->right = insert(root->right, value);
+    }
+
+    return root;
+}
+
+// inorder traversal: left, root, right
+void inorder(Node* root) {
+    if (root == nullptr) return;
+    inorder(root->left);
+    cout << root->value << " "; // this is the root
+    inorder(root->right);
+}
+
+// preorder traversal: root, left, right
+void preorder(Node* root) {
+    if (root == nullptr) return;
+    cout << root->value << " "; // this is the root
+    preorder(root->left);
+    preorder(root->right);
+}
+
 // random functions
 int factorial(int n) {
     if (n == 0) {
