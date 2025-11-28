@@ -166,6 +166,24 @@ void preorder(Node* root) {
     preorder(root->right);
 }
 
+// hashing
+list<int> hashTable[10];
+
+void insert(int value) {
+    int index = value % 10;
+    // push_back is a function that adds a value to the end of the list
+    hashTable[index].push_back(value);
+}
+
+void search(int value) {
+    int index = value % 10;
+    for (int i = 0; i < hashTable[index].size(); i++) {
+        if (hashTable[index][i] == value) {
+            return true;
+        }
+    }
+}
+
 // random functions
 int factorial(int n) {
     if (n == 0) {
